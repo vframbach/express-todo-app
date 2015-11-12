@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <!-- set viewport to device width to make site responsive -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- bootstrap css -->
+  <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+  <!-- custom styles -->
+  <link rel="stylesheet" type="text/css" href="main.css">
+
+  <title>To do App</title>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <h1 class="text-center">To do App</h1>
+        <br>
+        <form class="form-group" id="create-todo">
+          <input type="text" name="task" class="form-control" value="Task name">
+          <input type="text" name="description" class="form-control" value="Description">
+          <input type="submit" value="Create task" class="btn btn-warning btn-block">
+        </form>
+        <div id="todos-list"></div>
+        <script id="todos-template" type="text/x-handlebars-template">
+          <div class="entry">
+            <div class="todos">
+            {{#each todos}}
+              <h2>{{task}}</h2>
+              <div>{{description}}</div>
+              <button type="button" class="btn btn-default btn-xs edit" data-todo-id="{{id}}">Edit</button>
+              <button type="button" class="btn btn-default btn-xs delete" data-todo-id="{{id}}">Done</button>
+            {{/each}}
+            </div>
+          </div>
+        </script>
+      </div>
+    </div>
+  </div>
+  
+  <!-- jquery -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+  <!-- bootstrap js -->
+  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+  <!-- handlebars -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.3/handlebars.min.js"></script>
+
+  <!-- custom script -->
+  <script type="text/javascript" src="main.js"></script>
+</body>
+</html>
