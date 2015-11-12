@@ -30,11 +30,14 @@
           <div class="entry">
             <div class="todos">
             {{#each todos}}
-              <h2>{{task}}</h2>
-              <div>{{description}}</div>
-              <button type="button" class="btn btn-default btn-xs edit" data-todo-id="{{id}}">Edit
-              </button>
-              <button type="button" class="btn btn-default btn-xs delete" data-todo-id="{{id}}">Done</button>
+            	<div class="{{#if done}}done{{else}}not-done{{/if}}">
+	              <h2>{{#if done}}<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>{{/if}}{{task}}</h2>
+	              <div>{{description}}</div>
+	              <button type="button" class="btn btn-default btn-xs edit" data-todo-id="{{id}}">Edit
+	              </button>
+	              <button type="button" class="btn btn-default btn-xs done" data-todo-id="{{id}}">Done</button>
+	              <button type="button" class="btn btn-default btn-xs delete" data-todo-id="{{id}}">Delete</button>
+	              </div>
             {{/each}}
             </div>
           </div>

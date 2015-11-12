@@ -68,6 +68,31 @@ $(document).ready(function() {
 		});
 		//console.log(todoId);
 	});
+
+
+	$('#todos-list').on('click', '.done', function() {
+		var todoId = $(this).data('todo-id');
+		var todo = todosCollection.find(function(todo) {
+  			return todo.id == todoId;
+		});
+		todo.done = !todo.done;
+		var todoHtml = template({
+			todos: todosCollection
+		});
+		$('#todos-list').html(todoHtml);
+		console.log(todoHtml);
+		$.ajax({
+			type: 'PUT',
+			url: '/api/todos/' + todoId,
+			data: todo,
+			success: function(data) {
+				console.log('Todo has been edited!');
+			}
+		});
+		//console.log(todoId);
+	});
+
+
 	$('#todos-list').on('click', '.delete', function() {
 		var todoId = $(this).data('todo-id');
 		$.ajax({

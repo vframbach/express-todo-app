@@ -8,12 +8,18 @@
  app.use(express.static('public'));
 
 var todos = [
-	{ task: "do laundry",
-	description: "put in washing machine",
-		id: 1},
-	{ task: "Vacuum carpet",
-	description: "use vacuum",
-		id: 2}
+	{
+		task: "Go grocery shopping",
+		description: "Pick up bread and eggs",
+		id: 1,
+		done: false
+	},
+	{
+		task: "Wash dishes",
+		description: "Load dishwasher",
+		id: 2,
+		done: false	
+	}
 
 ];
 
