@@ -86,7 +86,7 @@ $(document).ready(function() {
 			url: '/api/todos/' + todoId,
 			data: todo,
 			success: function(data) {
-				console.log('Todo has been edited!');
+				console.log('Todo has been completed!');
 			}
 		});
 		//console.log(todoId);
@@ -99,7 +99,7 @@ $(document).ready(function() {
 			type: 'DELETE',
 			url: '/api/todos/' + todoId,
 			success: function(data) {
-				console.log('Todo has been completed!');
+				console.log('Todo has been deleted!');
 				refreshList();
 			}
 		});
