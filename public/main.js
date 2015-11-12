@@ -9,15 +9,18 @@ $(document).ready(function() {
 
 	var todosCollection = [];
 	// GET all todos
-	$.get('/api/todos', function(data) {
+	function refreshList() {
+		$.get('/api/todos', function(data) {
 			var todoHtml = template({
 				todos: data
 			});
-			$('#todos-list').append(todoHtml);
+			$('#todos-list').html(todoHtml);
 			console.log(data);
 			todosCollection = data;
 
 		});
+	}
+	refreshList();
 
 	// create new todo
 	// -form to create todo
@@ -37,7 +40,7 @@ $(document).ready(function() {
 			url: '/api/todos',
 			data: newtodo,
 			success: function(data) {
-				$('#title').val();
+				refreshList();
 			}
 		});
 
@@ -48,15 +51,17 @@ $(document).ready(function() {
 		var todo = todosCollection.find(function(todo) {
   			return todo.id == todoId;
 		});
-		var newTask = prompt('New todo task:', todo.task);
-		var newDescription = prompt('New description:', todo.description);
+		todo.task = prompt('New todo task:', todo.task);
+		todo.description = prompt('New description:', todo.description);
+		var todoHtml = template({
+			todos: todosCollection
+		});
+		$('#todos-list').html(todoHtml);
+		console.log(todoHtml);
 		$.ajax({
 			type: 'PUT',
 			url: '/api/todos/' + todoId,
-			data: {
-				task: newTask,
-    			description: newDescription,
-    		},
+			data: todo,
 			success: function(data) {
 				console.log('Todo has been edited!');
 			}
@@ -70,6 +75,7 @@ $(document).ready(function() {
 			url: '/api/todos/' + todoId,
 			success: function(data) {
 				console.log('Todo has been completed!');
+				refreshList();
 			}
 		});
 		console.log(todoId);
