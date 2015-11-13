@@ -1,0 +1,15 @@
+body {
+	background-color: #FDCA95;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+.container {
+	text-align: center;
+	padding-bottom: 25px;
+}
+
+.checkmark {
+	font-size: 70px;
+    background-color: #f5f5f5;
+}
+
